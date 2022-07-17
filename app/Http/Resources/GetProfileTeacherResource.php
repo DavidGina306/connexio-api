@@ -15,7 +15,6 @@ class GetProfileTeacherResource extends JsonResource
      */
     public function toArray($request)
     {
-        Log::info($this->projects);
         return  [
             "name" => $this->name,
             "about" => $this->about,
@@ -28,8 +27,21 @@ class GetProfileTeacherResource extends JsonResource
             "contact_1" => $this->contact_1,
             "contact_2" => $this->contact_2,
             'areas' => $this->areas->pluck('name'),
-            'projects' => $this->projects->pluck('title'),
-            'subjects' => $this->subjects->pluck('title')
+            'projects' => $this->projects->map(function ($project) {
+                return [
+                    'title' => $project->title,
+                    'initial_date' => $project->initial_date,
+                    'final_date' => $project->final_date
+                ];
+            }),
+            'subjects' => $this->subjects->map(function ($subject) {
+                Log::info($subject);
+                return [
+                    'title' => $subject->title,
+                    'initial_date' => $subject->initial_date,
+                    'final_date' => $subject->final_date
+                ];
+            }),
         ];
     }
 }

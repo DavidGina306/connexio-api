@@ -3,7 +3,6 @@
 namespace App\Services\Teachers;
 
 use App\Http\Resources\GetProfileTeacherResource;
-use App\Http\Resources\SearchTeacherResource;
 use App\Teacher;
 use Exception;
 use Illuminate\Support\Facades\Log;
