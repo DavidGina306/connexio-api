@@ -19,7 +19,7 @@ class CreateProjectTeachersTable extends Migration
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects');
             $table->primary(['teacher_id', 'project_id']);
-            $table->date('inital_date');
+            $table->date('initial_date');
             $table->date('final_date')->nullable();
         });
     }

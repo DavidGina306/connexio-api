@@ -13,8 +13,12 @@ class AreatoTeacherSeeder extends Seeder
      */
     public function run()
     {
-        Teacher::first()->areas()->attach(
-           SearchArea::first()->id
-        );
+       $teachers = Teacher::all();
+
+       foreach ($teachers as $teacher) {
+         $teacher->areas()->attach(
+            SearchArea::all()->random(random_int(1, 3))->pluck('id')
+         );
+       }
     }
 }
