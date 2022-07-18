@@ -23,4 +23,8 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         Route::get('search', "TeacherController@search");
         Route::get('{teacherId}', "TeacherController@getProfile");
     });
+
+    Route::group(['prefix' => 'search-areas'], function() {
+        Route::get('/', "SearchAreasController@list");
+    });
 });
