@@ -14,6 +14,7 @@ class UserSeeeder extends Seeder
     {
         User::query()->create([
             'name' => 'admin',
+            'photo' => 'https://cdn-icons-png.flaticon.com/512/1089/1089129.png',
             'email' => 'admin@connexio.com',
             'password' => 'Abc@1234',
         ]);
