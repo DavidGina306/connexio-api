@@ -18,14 +18,14 @@ class GetListTeacherService
 
             $teachers->when($search = $request->search, function ($query) use ($search) {
                 $query->where(function (Builder $query) use ($search) {
-                    $query->where('name', 'like', "%$search%");
+                    $query->where('name', 'ilike', "%$search%");
                 });
             });
 
             $teachers->when($searchArea = $request->search_areas, function ($query) use ($searchArea) {
                 $query->where(function (Builder $query) use ($searchArea) {
                     $query->whereHas('areas', function (Builder $query)  use ($searchArea) {
-                        $query->where('name', 'like', "%$searchArea%");
+                        $query->where('name', 'ilike', "%$searchArea%");
                     });
                 });
             });
