@@ -24,7 +24,7 @@ class Teacher extends Model
      */
     public function projects(): BelongsToMany
     {
-        return $this->belongsToMany(Project::class, 'project_teachers', 'teacher_id', 'project_id');
+        return $this->belongsToMany(Project::class, 'project_teachers', 'teacher_id', 'project_id')->withPivot('initial_date', 'final_date');
     }
 
 
@@ -35,6 +35,6 @@ class Teacher extends Model
      */
     public function subjects(): BelongsToMany
     {
-        return $this->belongsToMany(Subject::class, 'subject_teachers', 'teacher_id', 'subject_id');
+        return $this->belongsToMany(Subject::class, 'subject_teachers', 'teacher_id', 'subject_id')->withPivot('initial_date', 'final_date');
     }
 }
