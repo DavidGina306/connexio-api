@@ -16,23 +16,23 @@ class SearchAreaSeeder extends Seeder
         $faker = Faker\Factory::create();
         $searchAreas = [
             [
-                'name' => $faker->words(Arr::random([1, 2, 3])),
+                'name' => $faker->sentence(Arr::random([1, 2, 3])),
                 "description" => $faker->text
             ],
             [
-                'name'  => $faker->words(Arr::random([1, 2, 3])),
+                'name'  => $faker->sentence(Arr::random([1, 2, 3])),
                 "description" => $faker->text
             ],
             [
-                'name'  => $faker->words(Arr::random([1, 2, 3])),
+                'name'  => $faker->sentence(Arr::random([1, 2, 3])),
                 "description" => $faker->text
             ],
             [
-                'name'  => $faker->words(Arr::random([1, 2, 3])),
+                'name'  => $faker->sentence(Arr::random([1, 2, 3])),
                 "description" => $faker->text
             ],
             [
-                'name'  => $faker->words(Arr::random([1, 2, 3])),
+                'name'  => $faker->sentence(Arr::random([1, 2, 3])),
                 "description" => $faker->text
             ],
 
