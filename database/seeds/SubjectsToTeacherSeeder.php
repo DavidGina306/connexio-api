@@ -49,10 +49,12 @@ class SubjectsToTeacherSeeder extends Seeder
         foreach ($teachers as $teacher) {
             $name = $teacher['name'];
             $teacherAdd = Teacher::where('name', 'ilike', "%$name%")->first();
-            $subjects =  Subject::whereIn('title', $teacher['subjects'])->get();
-            $subjects->map(function ($subject) use ($teacherAdd) {
-                $teacherAdd->subjects()->attach($subject->id, ['initial_date' => Carbon::now()]);
-            });
+            if ($teacherAdd) {
+                $subjects =  Subject::whereIn('title', $teacher['subjects'])->get();
+                $subjects->map(function ($subject) use ($teacherAdd) {
+                    $teacherAdd->subjects()->attach($subject->id, ['initial_date' => Carbon::now()]);
+                });
+            }
         }
     }
 }
