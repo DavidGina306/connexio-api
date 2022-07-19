@@ -13,12 +13,43 @@ class AreatoTeacherSeeder extends Seeder
      */
     public function run()
     {
-       $teachers = Teacher::all();
+        $teachers = [
+            [
+                'name' => 'Silvia Muniz Gadelha',
+                'areas' => ['Pedagogia', 'Neuropsicopedagogia', 'Distúrbio de Aprendizagem']
+            ],
+            [
+                'name' => 'João Paulo Lins',
+                'areas' => ['Matemática', 'Geometria e Topologia']
+            ],
+            [
+                'name' => 'Rivelino câmara',
+                'areas' => ['Matemática', 'Matemática Aplicada', 'Geometria e Topologia', 'Ciências Exatas e da Terra', 'Espaço forma Riemanniano', 'Curvaturas de ordem superior']
+            ],
+            [
+                'name' => 'Sabrina Feitosa de Jesus',
+                'areas' => ['Quimica', 'Radioecologia Terrestre', 'Ciência Ambiental', 'Análise Geoambiental', 'Plantas Medicinais Brasileiras']
+            ],
+            [
+                'name' => 'Bruno Carvalho',
+                'areas' => ['Música', 'Composição', 'Harmonia', 'Regência']
+            ],
+            [
+                'name' => 'Rodrigo Limarques de Albuquerque',
+                'areas' => ['Medicina', 'Lesão medular', 'Neurociências', 'Ciências da Saúde']
+            ],
+            [
+                'name' => 'Gabriel Pacheco',
+                'areas' => ['Engenharia', 'Sistemas Mecânicos', 'Sistemas de Propulsão']
+            ],
 
-       foreach ($teachers as $teacher) {
-         $teacher->areas()->attach(
-            SearchArea::all()->random(random_int(1, 3))->pluck('id')
-         );
-       }
+        ];
+
+        foreach ($teachers as $teacher) {
+            $teacher = Teacher::whereName($teacher['name'])->first();
+            $teacher->areas()->attach(
+                SearchArea::whereIn('name', $teacher['areas'])->pluck('id')
+            );
+        }
     }
 }
