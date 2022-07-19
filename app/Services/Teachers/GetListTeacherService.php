@@ -25,6 +25,7 @@ class GetListTeacherService
             $teachers->when($searchArea = $request->search_areas, function ($query) use ($searchArea) {
                 $query->where(function (Builder $query) use ($searchArea) {
                     $query->whereHas('areas', function (Builder $query)  use ($searchArea) {
+                        $query->where('id', 'like', "%$searchArea%");
                         $query->where('name', 'ilike', "%$searchArea%");
                     });
                 });
