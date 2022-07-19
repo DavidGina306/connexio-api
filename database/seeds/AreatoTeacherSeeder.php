@@ -46,10 +46,11 @@ class AreatoTeacherSeeder extends Seeder
         ];
 
         foreach ($teachers as $teacher) {
-            $teacher = Teacher::whereName($teacher['name'])->first();
-            $teacher->areas()->attach(
-                SearchArea::whereIn('name', $teacher['areas'])->pluck('id')
-            );
+            $teacherAdd = Teacher::whereName($teacher['name'])->first();
+            $areas = SearchArea::whereIn('name', $teacher['areas'])->get();
+            $areas->map(function ($subject) use ($teacherAdd) {
+                $teacherAdd->areas()->attach($subject->id);
+            });
         }
     }
 }
