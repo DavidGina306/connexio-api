@@ -30,7 +30,7 @@ class GetProfileTeacherResource extends JsonResource
             'projects' => $this->projects->map(function ($project) {
                 return [
                     'title' => $project->title,
-                    'initial_date' => $project->pivot->initial_date,
+                    'initial_date' => $project->initial_date,
                     'final_date' => $project->final_date
                 ];
             }),
