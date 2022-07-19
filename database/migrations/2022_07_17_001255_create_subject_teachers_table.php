@@ -19,7 +19,7 @@ class CreateSubjectTeachersTable extends Migration
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects');
             $table->primary(['teacher_id', 'subject_id']);
-            $table->date('inital_date');
+            $table->date('initial_date');
             $table->date('final_date')->nullable();
         });
     }

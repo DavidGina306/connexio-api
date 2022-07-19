@@ -14,3 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('login', 'AuthController@login');
+Route::post('logout', 'AuthController@logout');
+Route::post('refresh', 'AuthController@refresh');
+Route::post('me', 'AuthController@me');
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::group(['prefix' => 'teachers'], function() {
+        Route::get('search', "TeacherController@search");
+        Route::get('{teacherId}', "TeacherController@getProfile");
+    });
+
+    Route::group(['prefix' => 'search-areas'], function() {
+        Route::get('/', "SearchAreasController@list");
+    });
+});
