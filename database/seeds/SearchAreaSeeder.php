@@ -2,6 +2,7 @@
 
 use App\SearchArea;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 
 class SearchAreaSeeder extends Seeder
 {
@@ -15,23 +16,23 @@ class SearchAreaSeeder extends Seeder
         $faker = Faker\Factory::create();
         $searchAreas = [
             [
-                'name' => $faker->text(100),
+                'name' => $faker->words(Arr::random([1, 2, 3])),
                 "description" => $faker->text
             ],
             [
-                'name'  => $faker->text(100),
+                'name'  => $faker->words(Arr::random([1, 2, 3])),
                 "description" => $faker->text
             ],
             [
-                'name'  => $faker->text(100),
+                'name'  => $faker->words(Arr::random([1, 2, 3])),
                 "description" => $faker->text
             ],
             [
-                'name'  => $faker->text(100),
+                'name'  => $faker->words(Arr::random([1, 2, 3])),
                 "description" => $faker->text
             ],
             [
-                'name'  => $faker->text(100),
+                'name'  => $faker->words(Arr::random([1, 2, 3])),
                 "description" => $faker->text
             ],
 
